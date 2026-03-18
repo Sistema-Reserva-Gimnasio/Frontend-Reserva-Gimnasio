@@ -1,38 +1,62 @@
-# sistemareservagimnasiofe
+# Sistema de Reservas (Frontend) — Vue 3 + Vite
 
-This template should help get you started developing with Vue 3 in Vite.
+Este proyecto es el **frontend** del sistema de reservas: una interfaz para consultar horarios, crear reservas y revisar información de espacios, consumiendo la API del backend.
 
-## Recommended IDE Setup
+## Stack
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Vue 3
+- Vite
+- Pinia
+- Axios
+- Tailwind CSS
 
-## Recommended Browser Setup
+## Requisitos
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+- Node.js (según `package.json`): `^20.19.0 || >=22.12.0`
+- npm
 
-## Customize configuration
+## Configuración de la API
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+El cliente HTTP usa la variable de entorno:
 
-## Project Setup
+- `VITE_API_BASE_URL`
 
-```sh
-npm install
+Si no la defines, el proyecto usa por defecto: `http://localhost:5000/api`.
+
+Recomendado: crea un archivo `.env.local` en la raíz del proyecto:
+
+```bash
+VITE_API_BASE_URL=http://localhost:5204/api
 ```
 
-### Compile and Hot-Reload for Development
+Si levantas el backend por HTTPS:
 
-```sh
+```bash
+VITE_API_BASE_URL=https://localhost:7288/api
+```
+
+## Ejecutar en local
+
+```bash
+npm install
 npm run dev
 ```
 
-### Compile and Minify for Production
+## Scripts disponibles
 
-```sh
-npm run build
-```
+- `npm run dev` — desarrollo (hot reload)
+- `npm run build` — build de producción
+- `npm run preview` — levantar una previsualización del build
+
+## Qué valida la pantalla principal
+
+La UI muestra un indicador “API: OK/Error” consultando `GET /health` del backend (a partir de la URL base configurada).
+
+## Estructura del código
+
+Dentro de `src/`:
+
+- `domain/` — modelos y contratos
+- `application/` — casos de uso / lógica de aplicación
+- `infrastructure/` — adaptadores (Axios, repositorios HTTP)
+- `presentation/` — vistas, componentes y stores
