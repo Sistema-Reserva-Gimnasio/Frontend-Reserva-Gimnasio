@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+/* Estilos base personalizados */
+@theme {
+  --color-primary-50: oklch(0.97 0.01 240);
+  --color-primary-100: oklch(0.93 0.04 240);
+  --color-primary-200: oklch(0.86 0.07 240);
+  --color-primary-300: oklch(0.75 0.14 240);
+  --color-primary-400: oklch(0.64 0.21 240);
+  --color-primary-500: oklch(0.55 0.25 240);
+  --color-primary-600: oklch(0.46 0.23 240);
+  --color-primary-700: oklch(0.39 0.20 240);
+  --color-primary-800: oklch(0.32 0.16 240);
+  --color-primary-900: oklch(0.27 0.12 240);
+}
+
+/* Estilos globales */
+body {
+  @apply bg-gray-50 text-gray-900 antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-bold;
+}
+
+/* Componentes personalizados */
+.btn-primary {
+  @apply px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors font-semibold;
+}
+
+.btn-secondary {
+  @apply px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors;
+}
+
+.card {
+  @apply bg-white rounded-xl shadow-lg p-6;
+}
+
+.input-field {
+  @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition;
+}
+
+.input-error {
+  @apply border-red-500 bg-red-50 focus:ring-red-500;
+}
+
+.error-message {
+  @apply text-sm text-red-600 mt-1;
+}
+
+/* Utilidades personalizadas */
+.glass-effect {
+  @apply backdrop-blur-md bg-white/90;
+}
+
+.gradient-primary {
+  @apply bg-gradient-to-r from-primary-500 to-blue-600;
+}
